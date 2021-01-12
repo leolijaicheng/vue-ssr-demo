@@ -13,7 +13,7 @@ module.exports = merge(baseConfig,{
         libraryTarget:'commonjs2'
     },
     externals:[nodeExternals({
-        allowlist:[/\.css$/]
+        allowlist:[/\.(s?css)$/]
     })],
     plugins:[
         new VueSSRServerPlugin()

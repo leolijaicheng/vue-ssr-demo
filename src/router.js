@@ -12,9 +12,9 @@ export function createRouter(){
         fallback:false,
         scrollBehavior:() => ({ y:0 }),
         routes:[
-            { path:'/',redirect:'/page1' },
-            { path:'/page1',component:page1 },
-            { path:'/page2',component:page2 }
+            { path:'/',redirect:'/view/user' },
+            { name:'user',path:'/view/user',component:page1 },
+            { name:'movie',path:'/view/move',component:page2 }
         ]
     })
 }

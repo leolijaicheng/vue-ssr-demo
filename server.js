@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const LRU = require('lru-cache')
+const router = require('./server-router')
 const { createBundleRenderer } = require('vue-server-renderer')
 
 const resolve = file => path.join(__dirname,file)
@@ -13,6 +14,8 @@ console.log('isProd::',process.env.NODE_ENV)
 
 
 const server = express()
+
+server.use('/api',router)
 
 server.use('/dist',express.static('./dist'))
 
@@ -53,12 +56,16 @@ if(isProd){
 
 
 const render = (req,res) => {
+
+    if(req.path === '/favicon.ico'){
+        return res.end()
+    }
+
     renderer.renderToString({
         title:'vue ssr demo',
         meta:'<meta name="description" content="vue ssr demo change my live">',
         url:req.url
     },(err,html) => {
-        console.log(err)
         if(err){
             return res.status(500).end('Internal Serve Error')
         }
@@ -69,12 +76,12 @@ const render = (req,res) => {
     })
 }
 
-server.get('*',isProd 
+server.get(/\/(view\/)?/,isProd 
    ? render 
    : (req,res) => {
     readyPromise.then(() =>  render(req,res))
 })
 
 server.listen(3001,() => {
-    console.log('Server running at http://localhost:3001')
+    console.log('=> Server running at http://localhost:3001')
 })

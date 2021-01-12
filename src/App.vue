@@ -1,32 +1,24 @@
 <template>
-    <div id="app">
-       <h1>客户端动态交互</h1>
-       <h2>{{ message }}</h2>
-       <div>
-           <input v-model="message">
-       </div>
-       <button @click="onClick">点击测试</button>
-       <router-view></router-view>
-    </div>
+  <div id="app" style="height:100%;background:#ebf0f5;">
+    <adminHeader></adminHeader>
+    <leftNav></leftNav>
+    <adminContent></adminContent>
+  </div>
 </template>
 
-<script>
-    export default {
-        data() {
-            return {
-                message: "ssr vue "
-            }
-        },
-        methods:{
-            onClick(){
-                console.log('Hello world')
-            }
-        }
-    }
-</script>
-
-<style  scoped>
-#app{
-    color:red;
-}
+<style lang="scss" scoped>
+  @import './assets/index.scss';
 </style>
+<script>
+  import adminHeader from './components/header';
+  import leftNav from './components/leftNavigation';
+  import adminContent from './components/adminContent';
+  export default{
+    name: 'app',
+    components: {
+      adminHeader,
+      leftNav,
+      adminContent
+    }
+  }
+</script>

@@ -1,4 +1,4 @@
-export const userlist = {
+exports.userlist = {
     userlist: [{
         'id': '1001',
         'name': '张三',
@@ -22,7 +22,7 @@ export const userlist = {
         },
     ]
 };
-export const movielist = {
+exports.movielist = {
     movielist: [{
         'id':'2001',
         'name':'小鬼当家1',
@@ -44,7 +44,7 @@ export const movielist = {
     ]
 };
 
-export const option1 = {
+exports.option1 = {
     title: {
         text: '电影分类统计'
     },
@@ -63,7 +63,7 @@ export const option1 = {
     }]
 };
 
-export const option2 = {
+exports.option2 = {
     title : {
         text: '电影分类统计',
         subtext: '纯属虚构',
