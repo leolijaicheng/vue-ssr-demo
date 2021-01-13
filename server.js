@@ -2,6 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const LRU = require('lru-cache')
+const compression = require('compression')
+const microCache = require('route-cache')
 const router = require('./server-router')
 const { createBundleRenderer } = require('vue-server-renderer')
 
@@ -12,12 +14,28 @@ const isProd = process.env.NODE_ENV === 'production'
 
 console.log('isProd::',process.env.NODE_ENV)
 
+const serveStatic = (path,cache = true) => {
+    return express.static(
+        resolve(path),
+        {
+            maxAge:cache && isProd ? 1000 * 60 * 24 * 30 : 0
+        }
+    )
+}
+
 
 const server = express()
 
+server.use(compression())
+
 server.use('/api',router)
 
-server.use('/dist',express.static('./dist'))
+server.use('/dist',serveStatic('./dist'))
+
+server.use('/public',serveStatic('./public'))
+
+// 页面级缓存
+server.use(microCache.cacheSeconds(1,req => req.originalUrl))
 
 
 function createRenderer(bundle,options){

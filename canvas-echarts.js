@@ -3,15 +3,17 @@ const path = require('path')
 const echarts = require('echarts')
 const { createCanvas } = require('canvas')
 
-exports.generateImage = function(options,imgPath,size){
+exports.generateImage = function(options,imgPath){
     return new Promise((resolve,reject) => {
         const canvas = createCanvas(400,200)
         const ctx = canvas.getContext('2d')
         ctx.font = '12px 楷体'
 
-        echarts.setCanvasCreator(() => canvas)
+        echarts.setCanvasCreator(function(){
+           return canvas
+        })
 
-        const chart = echarts.init(options)
+        const chart = echarts.init(canvas)
         options.animation = false
         
         chart.setOption(options)

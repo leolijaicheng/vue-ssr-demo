@@ -32,8 +32,10 @@ router.post('/drawEchart',(req,res) => {
       }
       body = body.trim()
 
+      let jsObject
+
       try {
-          const jsObject = JSON.parse(body)
+        jsObject = JSON.parse(body)
       } catch (error) {
           res.setHeader('Content-Type','text/plain')
           res.status(400)
@@ -46,7 +48,7 @@ router.post('/drawEchart',(req,res) => {
           return
       }
 
-       const { success,filename } = await generateImage(body)
+       const { success,filename } = await generateImage(jsObject.option,jsObject.name)
 
        if(success){
            res.status(200)
@@ -55,7 +57,7 @@ router.post('/drawEchart',(req,res) => {
        }
 
        res.setHeader('Content-Type','application/json')
-       res.end(JSON.stringify({ success,filename }))
+       res.json({ success,filename })
 
    })
 })

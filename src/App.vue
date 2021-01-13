@@ -10,9 +10,9 @@
   @import './assets/index.scss';
 </style>
 <script>
-  import adminHeader from './components/header';
-  import leftNav from './components/leftNavigation';
-  import adminContent from './components/adminContent';
+  import adminHeader from '@/components/header';
+  import leftNav from '@/components/leftNavigation';
+  import adminContent from '@/components/adminContent';
   export default{
     name: 'app',
     components: {

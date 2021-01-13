@@ -49,10 +49,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "canvas": "^2.6.1",
+    "compression": "^1.7.4",
     "echarts": "^5.0.0",
     "element-ui": "^2.14.1",
     "lru-cache": "^6.0.0",
     "nprogress": "^0.2.0",
+    "route-cache": "^0.4.5",
     "vue-router": "^3.4.9",
     "vue-router-sync": "^0.1.0",
     "vuex": "^3.6.0",

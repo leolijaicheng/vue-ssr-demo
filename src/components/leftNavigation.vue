@@ -45,18 +45,28 @@
                         index: '0-2'
                     }]
                 },
-                    {
-                        id: 'btn_homework_manage',
-                        icon_class: 'btn-homework-manage',
-                        text: '数据分析',
-                        router: {
-                            name: 'dataAnalysis',
-                            homepagename: 'dataAnalysis'
-                        },
-                        index: '1',
-                        hasSubMenu: false
+                {
+                    id: 'btn_homework_manage',
+                    icon_class: 'btn-homework-manage',
+                    text: '数据分析',
+                    router: {
+                        name: 'analy',
+                        homepagename: 'analy'
                     },
-                ]
+                    index: '1',
+                    hasSubMenu: false
+                },
+                 {
+                    id: 'btn_homework_manage',
+                    icon_class: 'btn-homework-manage',
+                    text: '表单分析',
+                    router: {
+                        name: 'form',
+                        homepagename: 'form'
+                    },
+                    index: '2',
+                    hasSubMenu: false
+                }]
             };
         },
         components: {

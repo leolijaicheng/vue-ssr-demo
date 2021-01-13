@@ -13,3 +13,11 @@ export function getMoveList(){
         method:'get'
     })
 }
+
+export function drawChart(data){
+    return axios({
+        url:'http://localhost:3001/api/drawEchart',
+        method:'post',
+        data
+    })
+}
